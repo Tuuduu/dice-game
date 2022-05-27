@@ -1,29 +1,13 @@
- //Тоглогчийн ээлжийн хадгалах хувсагч
 
-var activePlayer = 0;
-
- //Оноог хадгалах хувсагч
-
- var scores = [0, 0];
-
- //Тоглогчын ээлжиндээ цуглаж байгаа оноог хадгалах хувсагч 
-
- var roundScore = 0;
+var activePlayer;
+var score;
+var roundScore;
 
 
-
- //Тоглоомын эхлэх бэлтгэл
- document.getElementById('score-0').textContent = 0;
- document.getElementById('score-1').textContent = 0;
-
- document.getElementById('current-0').textContent = 0;
- document.getElementById('current-1').textContent = 0;
- 
+     // Шооны зургыг үзүүлэх 
  var diceDom = document.querySelector('.dice');
-diceDom.style.display = 'none';
 
-
-// Anonymous function Шоо шидэх
+////////// Anonymous function Шоо шидэх///////////////
 
 document.querySelector('.btn-roll').addEventListener("click", function(){
      //Шоо аль талаараа буусныг хадгалах хувьсагч хэрэгтэй, 1-6 гэсэн утгыг энэ хувьсагчид санамсаргүй үүсгэж өгнө.
@@ -47,15 +31,9 @@ document.querySelector('.btn-roll').addEventListener("click", function(){
 
 });
 
-// Hold товчны EVENT
+///////////////// Hold товчны EVENT///////////////////////
 document.querySelector('.btn-hold').addEventListener('click', function(){
     // Уг тоглогчийн цуглуулсан оноог глобаль оноон дээр нь нэмж өгнө.
-    // if(activePlayer === 0){
-    //     scores[0] = scores[0] + roundScore;
-    // }
-    // else{
-    //     scores[1] = scores[1] + roundScore;
-    // }
     scores[activePlayer]= scores[activePlayer] + roundScore;
 
         // Дэлгэц дээрх оноог өөрчилнө
@@ -70,9 +48,7 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
         switchToNextPlayer();
     }
 
-
-    // Тоглогчийн ээлжийг солино.
-
+     // Тоглогчийн ээлжийг солино.
 
 });
 // Энэ фүнкц нь тоглох ээлжийг дараачийн тоглогч руу шилжүүлдэг.
@@ -90,7 +66,30 @@ function switchToNextPlayer(){
     diceDom.style.display = 'none';
 }
 
-// Шинээр тоглоомыг эхлүүлэх
+/////////////////////// Шинээр тоглоомыг эхлүүлэх/////////////////////////
 document.querySelector('.btn-new').addEventListener('click', function(){
-    alert('daragdlaa');
+    initGame();
 })
+
+function initGame() {
+     //Тоглогчийн ээлжийн хадгалах хувсагч
+
+activePlayer = 0;
+
+    //Оноог хадгалах хувсагч
+
+scores = [0, 0];
+
+    //Тоглогчын ээлжиндээ цуглаж байгаа оноог хадгалах хувсагч 
+
+roundScore = 0;
+
+    //Тоглоомын эхлэх бэлтгэл
+document.getElementById('score-0').textContent = 0;
+document.getElementById('score-1').textContent = 0;
+document.getElementById('current-0').textContent = 0;
+document.getElementById('current-1').textContent = 0;
+
+diceDom.style.display = 'none';
+
+}
